@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-bebas: "Bebas Neue", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+
+  --color-yellow: #f5e96e;
+  --color-yellow-dark: #e8d94a;
+  --color-yellow-light: #faf5c0;
+  --color-black: #0a0a0a;
+  --color-black-soft: #111111;
+  --color-offwhite: #fafaf8;
+  --color-muted: #aaaaaa;
+  
+  --border-color-yellow-alpha: rgba(245, 233, 110, 0.25);
+  --border-color-yellow-strong: rgba(245, 233, 110, 0.4);
+  --border-color-dark-alpha: rgba(0, 0, 0, 0.12);
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-black text-white selection:bg-yellow selection:text-black antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bebas uppercase tracking-tight;
+  }
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-yellow);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.1s ease-out;
+}
+
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+/* Scroll reveal helper classes */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
